@@ -1,0 +1,102 @@
+#infoBoxAuftrag {
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#infoBoxBilder {
+    display: none;
+    float: right;
+    top: 0;
+    width: 50%;
+    max-height: 90%;
+}
+
+.fc-center {
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    height: fit-content;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding: 5px;
+    padding-right: 16px;
+}
+
+#infoBoxResource {
+    display: none;
+    position: fixed;
+    overflow: scroll;
+    top: 0;
+}
+
+.fc-state-intersect {
+    background: green;
+    display: none;
+}
+
+#pseudoLink {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
+
+#pseudoLink:hover {
+    text-shadow: 2px 2px 3px #555;
+}
+
+#searchbar {
+    display: block;
+}
+
+.picture {
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 100px;
+    max-width: 250px;
+    width: auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    margin: auto;
+    text-align: left;
+    font-family: arial;
+}
+
+.container {
+    padding: 55px, 55px, 55px, 55px;
+}
+
+#mitarbeiterListe {
+    overflow: scroll;
+    border: 1;
+    border-width: 10px;
+}
+
+.redClass {
+    color: red;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

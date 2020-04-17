@@ -1,0 +1,69 @@
+{
+  "_from": "tooltip-js",
+  "_id": "tooltip-js@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-irs9WV5d2rPVyeCltzvXSmIxt0Y=",
+  "_location": "/tooltip-js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "tooltip-js",
+    "name": "tooltip-js",
+    "escapedName": "tooltip-js",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/tooltip-js/-/tooltip-js-3.0.0.tgz",
+  "_shasum": "8abb3d595e5ddab3d5c9e0a5b73bd74a6231b746",
+  "_spec": "tooltip-js",
+  "_where": "C:\\Users\\Admin",
+  "author": {
+    "name": "Mark Kennedy",
+    "url": "http://heyimmark.com"
+  },
+  "bugs": {
+    "url": "https://github.com/mkay581/tooltip-js/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Easily implement tooltips using minimal javascript. Supports Meteor, AngularJS, React, Polymer and any CSS library, e.g. Bootstrap.",
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "build-tools": "^7.2.4",
+    "es6-promise": "^4.1.1",
+    "lodash": "^4.17.4",
+    "sinon": "^4.1.3",
+    "wait-for-element-transition": "^1.0.0"
+  },
+  "homepage": "https://github.com/mkay581/tooltip-js#readme",
+  "keywords": [
+    "tooltip",
+    "js tooltip",
+    "tooltip js",
+    "angular tooltip",
+    "react tooltip"
+  ],
+  "license": "MIT",
+  "main": "dist/tooltip.js",
+  "name": "tooltip-js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mkay581/tooltip-js.git"
+  },
+  "scripts": {
+    "test": "bt test"
+  },
+  "version": "3.0.0"
+}
