@@ -81,35 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addEventButton: {
                 text: '+',
                 click: function() {
-                    var date = Date.now();
-                    var i = iterateAndReturnDynamicEventCount();
-                    var j = i % 4;
-                    var eventColor = "";
-                    switch (j) {
-                        case 0:
-                            eventColor = "lightgreen";
-                            break;
-                        case 1:
-                            eventColor = "yellow";
-                            break;
-                        case 2:
-                            eventColor = "pink";
-                            break;
-                        case 3:
-                            break;
-                        default:
-
-                    };
-                    calendar.addEvent({
-                        title: 'Auftrag' + i + "\n" + "Beschreibung",
-                        color: eventColor,
-                        start: date,
-                        textColor: "black",
-                        end: date + (8 * 60 * 60 * 1000),
-                        resourceId: 'r0',
-                        furtherInfo: "Hover Informationen zu Auftrag" + i
-                    });
-
+                    showCreateEventMask();
                 }
             },
             wechsleTeamAuftragButton: {
@@ -164,20 +136,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resourceGroupField: 'untergruppe',
 
-        resources: [{
-                id: 'r0',
-                title: 'Resource1'
-            },
-            {
-                id: 'r1',
-                title: 'Resource2'
+        resources: {
+            url: '/Plantafel/getResources.php',
+            method: 'POST',
+            extraParams: function() {
+                return {
+                    dynamic_value: requestType
+                };
             }
-        ],
 
-        events: [{
+        },
 
+        events: {
+            url: '/Plantafel/getEvents.php',
+            method: 'POST',
+            extraParams: function() {
+                return {
+                    dynamic_value: requestType
+                };
+            },
 
-        }, ],
+            error: function() {
+                alert('there was an error while fetching aufrag events!');
+            },
+            textColor: 'black',
+
+        },
 
 
     });
@@ -251,6 +235,26 @@ function initializeHeader() {
 
 function fillDropDowns() {
 
+}
+
+function showCreateEventMask() {
+    var newEventMask = document.getElementById("createMask");
+    newEventMask.style.display = "block";
+}
+
+function hideCreateEventMask() {
+    var newEventMask = document.getElementById("createMask");
+    newEventMask.style.display = "none";
+}
+
+function showEmployeeMask() {
+    var employeeMask = document.getElementById("employeeMask");
+    employeeMask.style.display = "block";
+}
+
+function hideEmployeeMask() {
+    var employeeMask = document.getElementById("employeeMask");
+    employeeMask.style.display = "none";
 }
 
 var counter = 0;
