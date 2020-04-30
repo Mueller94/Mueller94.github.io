@@ -1,4 +1,7 @@
 var calendarVisible = true;
+
+var filterOpen = false;
+var createMaskOpen = false;
 /**
  * When the document has loaded start customizing the header of the fullcalendar with drop downs
  */
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         },
         header: {
-            left: 'prev,next,wechsleTeamAuftragButton, today, addEventButton',
+            left: 'prev,next,wechsleTeamAuftragButton, today, addEventButton,filterButton',
             center: 'title',
             right: 'resourceTimeline, resourceTimeLineWeek'
         },
@@ -79,9 +82,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
         customButtons: {
             addEventButton: {
-                text: '+',
+                text: 'Neuer Termin',
                 click: function() {
-                    showCreateEventMask();
+                    if (!createMaskOpen) {
+                        hideAllMasks();
+                        showCreateEventMask();
+                    } else {
+                        hideAllMasks();
+                    }
+                }
+            },
+            filterButton: {
+                text: 'Filter',
+                click: function() {
+                    if (!filterOpen) {
+                        hideAllMasks();
+                        showFilterMask();
+                    } else {
+                        hideAllMasks();
+                    }
                 }
             },
             wechsleTeamAuftragButton: {
@@ -93,13 +112,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         $(this).text('Resource');
                         calendar.refetchEvents();
                         calendar.refetchResources();
+                        hideAllMasks();
                     } else {
                         team = true;
                         requestType = 'resource';
                         $(this).text('Auftrag');
                         calendar.refetchEvents();
+                        hideAllMasks();
                         calendar.refetchResources();
-
                     }
                 }
             }
@@ -218,33 +238,16 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     }
 }
 
-/**
- * Add dropdowns to header of fullcalendar
- */
-function initializeHeader() {
-    var newParent = document.getElementsByClassName('fc-center')[0];
-    var store = newParent.innerHTML;
-    newParent.innerHTML = "";
-    document.getElementById("dateHolder").innerHTML = store;
-    var oldParent = document.getElementById('searchbar');
-
-    while (oldParent.childNodes.length > 0) {
-        newParent.appendChild(oldParent.childNodes[0]);
-    }
-}
-
-function fillDropDowns() {
-
-}
-
 function showCreateEventMask() {
     var newEventMask = document.getElementById("createMask");
     newEventMask.style.display = "block";
+    createMaskOpen = true;
 }
 
 function hideCreateEventMask() {
     var newEventMask = document.getElementById("createMask");
     newEventMask.style.display = "none";
+    createMaskOpen = false;
 }
 
 function showEmployeeMask() {
@@ -257,6 +260,17 @@ function hideEmployeeMask() {
     employeeMask.style.display = "none";
 }
 
+function showFilterMask() {
+    var filterMask = document.getElementById("filterMask");
+    filterMask.style.display = "block";
+    filterOpen = true;
+}
+
+function hideFilterMask() {
+    var filterMask = document.getElementById("filterMask");
+    filterMask.style.display = "none";
+    filterOpen = false;
+}
 var counter = 0;
 
 function iterateAndReturnDynamicEventCount() {
@@ -300,10 +314,59 @@ function filterEvents() {
     alert("placeholder");
 }
 
+function hideAllMasks() {
+    filterOpen = false;
+    createMaskOpen = false;
+    hideFilterMask();
+    hideCreateEventMask();
+}
+
 Date.prototype.addHours = function(h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
 }
+
+function submitNewEvent() {
+    if (checkSubmissionValid) {
+        sendData();
+    } else {
+        highLightMissingFields();
+    }
+}
+
+function checkSubmissionValid() {
+    return false;
+}
+
+function sendData() {
+
+}
+
+function highLightMissingFields() {
+    var optionMitarbeiter = document.getElementById("calendar");
+}
+
+function applyFilter() {
+    if (checkFilterValid) {
+        filterData();
+    } else {
+        highLightMissingFilterFields();
+    }
+}
+
+function checkFilterValid() {
+    return false;
+}
+
+function filterData() {
+
+}
+
+function highLightMissingFilterFields() {
+
+}
+
+
 
 /**
  * Exit the resourceview by hiding it and unhiding the calendarview
