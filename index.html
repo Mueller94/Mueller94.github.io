@@ -95,14 +95,14 @@
                     <td></td>
                     <tr>
 
-                        <tr>
-                            <td>Vorname</td>
-                            <td>Nachname</td>
-                        </tr>
-                        <tr>
-                            <td>Max</td>
-                            <td>Mustermann</td>
-                        </tr>
+                    <tr>
+                        <td>Vorname</td>
+                        <td>Nachname</td>
+                    </tr>
+                    <tr>
+                        <td>Max</td>
+                        <td>Mustermann</td>
+                    </tr>
                     </tr>
                     </tr>
                 </table>
@@ -152,184 +152,193 @@
 
             </table>
         </div>
-
-        <div id='filterMask' class="mask">
-            <div id="closeFilterMask" class="exitButton">
-                <h2 class="theX">X</h2>
-            </div>
-        </div>
-
-
-
-        <div id="createMask" class="mask">
-            <h3>Termin erfassen</h3>
-
-
+        
+        <div id='filterMask' class = "mask">
+            <h1>Filter Kriterien</h1>
             <table>
                 <tr>
-                    <td>Beginn</td>
-                    <td><input type="date" id="startDate"></td>
+                    <td> <input type="checkbox" id="OptionMitarbeiter"></td>
+                    <td>Mitarbeiter</td>
+                    <td>
+                        <select>
+                        <option value="default">Mitarbeiter auswählen</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Ende</td>
-                    <td><input type="date" id="endDate"></td>
-                </tr>
-                <tr>
+                    <td> <input type="checkbox" id="OptionBereich"></td>
                     <td>Bereich</td>
                     <td>
                         <select id="selectDepartment">
-                    <option value="default">Bereich auswählen</option>
-                </select></td>
+                            <option value="default">Bereich auswählen</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team</td>
+                    <td> <input type="checkbox" id="OptionTeam"></td>
+                    <td>Team</td> 
                     <td>
                         <select id="selectTeam">
+                            <option value="default">Team auswählen</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="OptionArt"></td>
+                    <td>Art</td>
+                    <td>
+                        <select id="selectType">                    
+                            <option value="default">Art auswählen</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="OptionKunde"></td>
+                    <td>Kunde</td>
+                    <td>
+                        <select id="selectType">                    
+                            <option value="default">Kunde auswählen</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="OptionStatus"></td>
+                    <td>Status</td>
+                    <td>
+                        <select id="selectType">                    
+                            <option value="default">Status auswählen</option>
+                        </select>
+                    </td>
+                </tr>
+            </table><ul>
+            <li>
+                <button id="closeEmployeeMask" class="exitButton" onclick="hideFilterMask();"><h3 class="theX">X</h3></button>
+            </li>
+            <li>                
+                <button id="acceptEmployeeMask" class="acceptButton"><h3 class="theOk">✓</h3></button>
+            </li>
+        </ul>       
+        </div>
+
+        
+
+        <div id="createMask" class = "mask">
+        <h3>Termin erfassen</h3>
+        
+        
+        <table>
+            <tr>
+                <td>Beginn</td> <td><input type="date" id="startDate"></td>
+            </tr>
+            <tr>
+            <td>Ende</td> <td><input type="date" id="endDate"></td>
+            </tr>
+            <tr>
+            <td>Bereich</td> 
+            <td>
+                <select id="selectDepartment">
+                    <option value="default">Bereich auswählen</option>
+                </select></td>
+            </tr>
+            <tr>
+            <td>Team</td> 
+            <td>
+                <select id="selectTeam">
                     <option value="default">Team auswählen</option>
                 </select></td>
-                </tr>
-                <tr>
-                    <tr>
-                        <td>
-                            <Button onclick="showEmployeeMask();">Mitarbeiter</Button>
-                        </td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td>Art</td>
-                        <td>
-                            <select id="selectType">                    
+            </tr>
+            <tr>
+            <tr>
+            <td><Button onclick="showEmployeeMask();">Mitarbeiter</Button></td><td>0</td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+            <td>Art</td> 
+            <td>
+                <select id="selectType">                    
                     <option value="default">Art auswählen</option>
                 </select></td>
-                    </tr>
-                    <tr>
-                        <td>Auftrag</td>
-                        <td>
-                            <select id="selectCommision">
+            </tr>
+            <tr>
+            <td>Auftrag</td> 
+            <td>
+                <select id="selectCommision">
                     <option value="default">Auftrag auswählen</option>
                 </select></td>
-                    </tr>
-                    <tr>
-                        <td>Kunde</td>
-                        <td>
-                            <select id="selectCustomer">                    
+            </tr>
+            <tr>
+            <td>Kunde</td> 
+            <td>
+                <select id="selectCustomer">                    
                     <option value="default">Kunde auswählen</option>
                 </select></td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                            <select id="selectStatus">
+            </tr>
+            <tr>
+            <td>Status</td> 
+            <td>
+                <select id="selectStatus">
                     <option value="default">Status auswählen</option>
                 </select></td>
-                    </tr>
-                    <tr>
-                        <td>Stückzahl</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Bemerkung</td>
-                        <td><input type="text"></td>
-                    </tr>
-            </table>
-            <ul>
-                <li>
-                    <button id="closeCreateMask" class="exitButton" onclick="hideCreateEventMask();"><h3 class="theX">X</h3></button>
-                </li>
-                <li>
-                    <button id="acceptCreateMask" class="acceptButton"><h3 class="theOk">✓</h3></button>
-                </li>
-            </ul>
+            </tr>
+            <tr>
+            <td>Stückzahl</td> <td><input type="text"></td>
+            </tr>
+            <tr>
+            <td>Bemerkung</td> <td><input type="text"></td>
+            </tr>
+        </table>
+        <ul>
+            <li>
+                <button id="closeCreateMask" class="exitButton" onclick="hideCreateEventMask();"><h3 class="theX">X</h3></button>
+            </li>
+            <li>                
+                <button id="acceptCreateMask" class="acceptButton"><h3 class="theOk">✓</h3></button>
+            </li>
+        </ul> 
         </div>
         <div id="employeeMask" class="mask">
-            <h3>Mitarbeiter</h3>
-            <ul>
-                <li>
-                    <select>
+        <h3>Mitarbeiter</h3>
+        <ul>
+        <li>
+        <select>
             <option value="default">Mitarbeiter auswählen</option>
         </select>
-                    <button>Hinzufügen</button>
-                </li>
-            </ul>
-            <table>
-                <tr>
-                    <td>Vorname</td>
-                    <td>Nachname</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </Table>
-            <ul>
-                <li>
-                    <button id="closeEmployeeMask" class="exitButton" onclick="hideEmployeeMask();"><h3 class="theX">X</h3></button>
-                </li>
-                <li>
-                    <button id="acceptEmployeeMask" class="acceptButton"><h3 class="theOk">✓</h3></button>
-                </li>
-            </ul>
+        <button>Hinzufügen</button>
+        </li>
+        </ul>
+        <table>
+            <tr>
+                <td>Vorname</td>
+                <td>Nachname</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </Table>
+        <ul>
+            <li>
+                <button id="closeEmployeeMask" class="exitButton" onclick="hideEmployeeMask();"><h3 class="theX">X</h3></button>
+            </li>
+            <li>                
+                <button id="acceptEmployeeMask" class="acceptButton"><h3 class="theOk">✓</h3></button>
+            </li>
+        </ul> 
         </div>
         <div id='infoBoxBilder' class="card">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
-            <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
+        <img class='picture' src="test.bmp">
         </div>
 
-        <div id="searchbar">
-
-            <ul id="listOfSelects">
-                <li>
-                    <input type="text" id="textInputFilter" placeholder="suche Auftrag..." onchange="filter();" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();">
-                </li>
-                <li id="dateHolder">
-                </li>
-                <li>
-                    Gebäude<br>
-                    <select id="selectGebeude">
-                        <option value="g0">Campus</option>
-                        <option value="g1">Gebäude2</option>
-                        <option value="g2">Gebäude3</option>
-                        <option value="alle">-alle</option>
-                    </select>
-                </li>
-                <li>
-                    Stockwerk<br>
-                    <select id="selectStockwerk">
-                        <option value="s0">Eingang</option>
-                        <option value="s1">1</option>
-                        <option value="s2">2</option>
-                        <option value="alle">-alle</option>
-                    </select>
-                </li>
-                <li>
-                    Wohnung<br>
-                    <select id="selectWohnung">
-                        <option value="g0">A100</option>
-                        <option value="g1">A101</option>
-                        <option value="g2">A102</option>
-                        <option value="alle">-alle</option>
-                    </select>
-                </li>
-                <li>
-                    Raum<br>
-                    <select id="selectRaum">
-                        <option value="g0">Raum1</option>
-                        <option value="g1">Raum2</option>
-                        <option value="g2">Raum3</option>
-                        <option value="alle">-alle</option>
-                    </select>
-                </li>
-            </ul>
-        </div>
+        
         <div id='calendar'></div>
 </body>
 
