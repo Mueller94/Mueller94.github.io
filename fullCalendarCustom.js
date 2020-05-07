@@ -2,27 +2,24 @@ var calendarVisible = true;
 
 var filterOpen = false;
 var createMaskOpen = false;
-/**
- * When the document has loaded start customizing the header of the fullcalendar with drop downs
- */
-$(document).ready(function() {
-    initializeHeader();
-});
+var globalCalendar;
 
 /**
  * Fullcalendar constructor
  */
 document.addEventListener('DOMContentLoaded', function() {
+
     var team = false;
     var requestType = 'team';
     var doubleClickActive = false;
 
     var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    var calendar = globalCalendar = new FullCalendar.Calendar(calendarEl, {
         editable: true,
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         plugins: ['resourceTimeline', 'interaction', 'dayGrid', 'timeGrid', 'list', 'resourceTimeGrid'],
         height: 'parent',
+        weekNumbers: true,
 
         eventResize: function(info) {},
 
@@ -76,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         header: {
             left: 'prev,next,wechsleTeamAuftragButton, today, addEventButton,filterButton',
             center: 'title',
-            right: 'resourceTimeline, resourceTimeLineWeek'
+            right: 'resourceTimeline, resourceTimelineWeek, resourceTimelineMonth,resourceTimelineYear',
         },
 
 
@@ -144,49 +141,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }],
 
         views: {
-            resourceTimeLineWeek: {
-                type: 'resourceTimeline',
-                duration: {
-                    days: 7
-                },
-                buttonText: '7 Tage',
+            resourceTimelineWeek: {
+                buttonText: 'Woche',
+                firstDay: '1',
                 slotDuration: '24:00:00'
             },
+            resourceTimelineMonth: {
+                buttonText: "Monat"
+            },
+            resourceTimelineYear: {
+                buttonText: "Jahr"
+            }
         },
 
-        resourceGroupField: 'untergruppe',
+        resourceGroupField: 'bereich',
 
         resources: {
-            url: '/Plantafel/getResources.php',
-            method: 'POST',
-            extraParams: function() {
-                return {
-                    dynamic_value: requestType
-                };
-            }
+            url: 'getTeamsAsResources.php',
 
         },
 
-        events: {
-            url: '/Plantafel/getEvents.php',
-            method: 'POST',
-            extraParams: function() {
-                return {
-                    dynamic_value: requestType
-                };
-            },
+        events: [],
 
-            error: function() {
-                alert('there was an error while fetching aufrag events!');
-            },
-            textColor: 'black',
 
-        },
 
 
     });
     calendar.setOption('locale', 'de');
     calendar.render();
+    globalCalendar = calendar;
 });
 
 /**
@@ -395,4 +378,50 @@ function exitResourceBig() {
         infoBoxBilder.style.display = "block";
         console.log("displaying infobox");
     }
+}
+
+function filterTeams(select) {
+    var departmentID = select.options[select.selectedIndex].value;
+    var teamSelect = document.getElementById("selectTeamCreate");
+    var counter = 0;
+    showAllTeamOptions(teamSelect);
+    while (teamSelect.options.length > counter) {
+        if (teamSelect.options[counter].getAttribute("bereich_id") != departmentID) {
+            teamSelect.remove(counter);
+        } else {
+            counter++;
+        }
+    }
+}
+
+function createEventAlert() {
+
+    var teamSelect = document.getElementById("selectTeamCreate");
+    var typeSelect = document.getElementById("selectTypeCreate");
+    var event = {
+        id: 'eh',
+        resourceId: teamSelect.options[teamSelect.selectedIndex].value,
+        title: typeSelect.options[typeSelect.selectedIndex].text,
+        start: new Date(),
+        allDay: true,
+    };
+    globalCalendar.addEvent(event);
+    hideCreateEventMask();
+}
+
+function createMaskAddEmployee() {
+
+}
+
+
+function checkEndDateCreateCheckBox() {
+    document.getElementById("durationCheckBoxCreate").checked = false;
+}
+
+function checkEndDurationCheckBox() {
+    document.getElementById("endDateCheckBoxCreate").checked = false;
+}
+
+function showAllTeamOptions(select) {
+    select.innerHTML = document.getElementById("selectAllOptions").innerHTML;
 }
