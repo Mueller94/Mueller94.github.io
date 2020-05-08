@@ -156,10 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resourceGroupField: 'bereich',
 
-        resources: {
-            url: 'getTeamsAsResources.php',
-
-        },
+        resources: [{ "title": "Team 1a", "bereich": "Nord", "id": "1", "bereichId": "1" }, { "title": "Team 2a", "bereich": "Nord", "id": "2", "bereichId": "1" }, { "title": "Team 3a", "bereich": "Nord", "id": "3", "bereichId": "1" }, { "title": "Team 4a", "bereich": "Nord", "id": "4", "bereichId": "1" }, { "title": "Team 1b", "bereich": "Mittel", "id": "5", "bereichId": "2" }, { "title": "Team 2b", "bereich": "Mittel", "id": "6", "bereichId": "2" }, { "title": "Team 3b", "bereich": "Mittel", "id": "7", "bereichId": "2" }, { "title": "Team 4b", "bereich": "Mittel", "id": "8", "bereichId": "2" }, { "title": "Team 1c", "bereich": "S\u00fcd", "id": "9", "bereichId": "3" }, { "title": "Team 2c", "bereich": "S\u00fcd", "id": "10", "bereichId": "3" }, { "title": "Team 3c", "bereich": "S\u00fcd", "id": "11", "bereichId": "3" }, { "title": "Team 4c", "bereich": "S\u00fcd", "id": "12", "bereichId": "3" }],
 
         events: [],
 
